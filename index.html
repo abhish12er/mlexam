@@ -1,343 +1,1967 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Machine Learning Notes</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mobile App Development Notes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f4f4;
       padding: 20px;
-      line-height: 1.6;
     }
+
     h1 {
       text-align: center;
+      color: #2c3e50;
     }
-    .content {
-      background: #fff;
-      padding: 20px;
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      background-color: #ffffff;
       border-radius: 10px;
-      white-space: pre-wrap;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+      padding: 20px;
+      position: relative;
     }
+
     .copy-btn {
-      display: block;
-      margin: 20px auto;
-      padding: 10px 20px;
-      font-size: 16px;
-      background: #4CAF50;
-      color: #fff;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #3498db;
+      color: white;
       border: none;
+      padding: 8px 14px;
       border-radius: 5px;
       cursor: pointer;
     }
+
     .copy-btn:hover {
-      background: #45a049;
+      background-color: #2980b9;
+    }
+
+    #noteContent {
+      background: #2e2e2e;
+      color: #f1f1f1;
+      padding: 20px;
+      border-radius: 8px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      overflow-y: auto;
+      max-height: 500px;
     }
   </style>
 </head>
 <body>
 
-  <h1>Machine Learning Setup and Programs</h1>
-  <button class="copy-btn" onclick="copyContent()">Copy All</button>
+<h1>📱 Mobile App Development Notes</h1>
 
-  <div class="content" id="noteContent">
-I1. install and set up Python and essential libraries like NumPy and Pandas.
- Install Python: If you haven't already installed Python, you can download it from the official
-website:
-To verify (terminal)
-python --version
-Install pip: pip is a package manager for Python that allows you to easily install and manage
-libraries. Most recent versions of Python come with pip pre-installed. You can verify if pip is
-installed by running the following command in your terminal or command prompt:
- pip --version
-Install NumPy and pandas: Once you have Python and pip installed, you can use pip to install
-NumPy and pandas by running the following commands in your terminal or command prompt:
-#In terminal
- pip install numpy
- pip install pandas
-This will download and install NumPy and Pandas along with any dependencies they require.
-Verify installation: After installing NumPy and pandas, you can verify that they were installed
-correctly by running the following commands in Python's interactive mode or a Python script:
- import numpy
- import pandas
- print(numpy.__version__)
- print(pandas.__version__)
+<div class="container">
+  <button class="copy-btn" onclick="copyNotes()">Copy All</button>
+  <div id="noteContent"></div>
+</div>
 
-These commands should print the versions of NumPy and pandas that were installed.
-Output:
+<script>
+  const notes = `
+// ✅ Mobile App Development Notes
+
+MAD LAB PROGRAMS
 
 
-2. Introduce sci-kit-learn as a machine learning library.
-Scikit-learn (Sklearn) is the most useful and robust library for machine learning in Python. It
-provides a selection of efficient tools for machine learning and statistical modeling including
-classification, regression, clustering and dimensionality reduction via a consistence interface
-in Python. This library, which is largely written in Python, is built upon NumPy,
-SciPy and Matplotlib.
-Installation
-If you already installed NumPy and Scipy, the following are the two easiest ways to install
-scikit-learn −
-Using pip
-The following command can be used to install sci-kit-learn via pip
-pip install -U scikit-learn
-Features
-Rather than focusing on loading, manipulating and summarising data, Scikit-learn library is
-focused on modeling the data. Some of the most popular groups of models provided by Sklearn
-are as follows −
-Supervised Learning algorithms − Almost all the popular supervised learning algorithms,
-like Linear Regression, Support Vector Machine (SVM), Decision Tree etc., are the part of
-scikit-learn.
-Unsupervised Learning algorithms − On the other hand, it also has all the popular
-unsupervised learning algorithms from clustering, factor analysis, PCA (Principal Component
-Analysis) to unsupervised neural networks.
-Clustering − This model is used for grouping unlabeled data.
-Cross Validation − It is used to check the accuracy of supervised models on unseen data.
-
-
-3. Install and set up scikit-learn and other necessary tools.
- scikit-learn, a powerful Python library for machine learning. Here are the steps to set it up:
-Install Python: If you haven’t already installed Python, download and install the latest version
-of Python 3 from the official Python website.
-Install scikit-learn using pip: Open your terminal or command prompt and run the following
-command:
-pip install -U scikit-learn
-To verify your installation, you can use the following commands:
-python -m pip show scikit-learn
-# To see which version and where scikit-learn is installed
-python -m pip freeze
-# To see all packages installed in the active virtual environment
-import sklearn
-import numpy
-import pandas
-import matplotlib
-print(sklearn.__version__)
-print(numpy.__version__)
-print(pandas.__version__)
-print(matplotlib.__version__)
-These commands should print the versions of scikit-learn and other libraries that were
-installed.
-Output:
-
-
-4. Write a program to Load and explore the dataset of .CVS and excel files using
-pandas.
-import pandas as pd
-def explore_dataset(file_path):
- # Check if the file is a CSV or Excel file
- if file_path.endswith('.csv'):
- # Load CSV file into a pandas DataFrame
- df = pd.read_csv(file_path)
- elif file_path.endswith('.xlsx'):
- # Load Excel file into a pandas DataFrame
- df = pd.read_excel(file_path)
-else:
- print("Unsupported file format. Please provide a CSV or Excel file.")
- return
- # Display basic information about the DataFrame
- print("Dataset information:")
- print(df.info())
- # Display the first few rows of the DataFrame
- print("\nFirst few rows of the dataset:")
- print(df.head())
- # Display summary statistics for numerical columns
- print("\nSummary statistics:")
- print(df.describe())
- # Display unique values for categorical columns
- print("\nUnique values for categorical columns:")
- for column in df.select_dtypes(include='object').columns:
- print(f"{column}: {df[column].unique()}")
-# Example usage
-file_path = 'IRIS.csv'
-# Change this to the path of your CSV or Excel file
-explore_dataset(file_path)
-Output:
-
-
-5. Write a program to Visualize the dataset to gain insights using Matplotlib or
-Seaborn by plotting scatter plots, and bar charts.
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-def visualize_dataset(file_path):
- # Load the dataset into a pandas DataFrame
- df = pd.read_csv(file_path)
- # Assuming it's a CSV file, change accordingly if it's an Excel file
- # Plot scatter plots
- sns.pairplot(df)
- plt.title("Pairplot of the Dataset")
- plt.show()
-# Plot bar chart for categorical column (assuming the first column is categorical)
- if df.iloc[:, 0].dtype == 'object':
- sns.countplot(x=df.columns[0], data=df)
- plt.title("Bar Chart of Categorical Column")
- plt.xlabel(df.columns[0])
- plt.ylabel("Count")
- plt.show()
- else:
- print("No categorical column found to plot bar chart.")
-# Example usage
-file_path = 'IRIS.csv' # Change this to the path of your CSV file
-visualize_dataset(file_path)
-Output:
-
-
-6. Write a program to Handle missing data, encode categorical variables, and
-perform feature scaling.
-import pandas as pd
-from sklearn.datasets import load_iris
-from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import OneHotEncoder, StandardScaler
-# Load Iris dataset
-iris = load_iris()
-iris_df = pd.DataFrame(data=iris.data, columns=iris.feature_names)
-iris_df['target'] = iris.target
-def preprocess_dataset(df):
-# Handle missing data (Iris dataset doesn't have missing values, but we'll simulate
-some)
- df.iloc[::10, 0] = float('NaN')
- # Simulate missing values in the first column
- imputer = SimpleImputer(strategy='mean')
- df[df.columns] = imputer.fit_transform(df[df.columns])
- # Encode categorical variable (if applicable)
- # Since Iris dataset doesn't have categorical variables, we'll skip this step
- # Perform feature scaling
-scaler = StandardScaler()
-df[df.columns[:-1]] = scaler.fit_transform(df[df.columns[:-1]])
- return df
-# Preprocess Iris dataset
-preprocessed_df = preprocess_dataset(iris_df)
-# Display preprocessed dataset
-print("Preprocessed dataset:")
-print(preprocessed_df.head())
-Output:
-
-
-7. Write a program to implement a k-Nearest Neighbours (k-NN) classifier using
-scikit-learn and Train the classifier on the dataset and evaluate its performance.
-import numpy as np
-import pandas as pd
-from sklearn.datasets import load_iris
-from sklearn.model_selection import train_test_split
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import accuracy_score, classification_report
-# Load Iris dataset
-iris = load_iris()
-X = iris.data
-y = iris.target
-# Split the dataset into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2,
-random_state=42)
-# Initialize the k-NN classifier
-k = 3 # Number of neighbors
-knn_classifier = KNeighborsClassifier(n_neighbors=k)
-# Train the classifier
-knn_classifier.fit(X_train, y_train)
-# Make predictions on the testing set
-y_pred = knn_classifier.predict(X_test)
-# Evaluate the classifier's performance
-accuracy = accuracy_score(y_test, y_pred)
-print("Accuracy:", accuracy)
-# Display classification report
-print("Classification Report:")
-print(classification_report(y_test, y_pred, target_names=iris.target_names))
-Output:
-
-
-8. Write a program to implement a linear regression model for regression tasks
-and Train the model on a dataset with continuous target variables.
-import numpy as np
-import pandas as pd
-from sklearn.datasets import load_boston
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
-# Load Boston Housing dataset
-boston = load_boston()
-X = boston.data
-y = boston.target
-# Convert the data to a pandas DataFrame for easier manipulation
-boston_df = pd.DataFrame(data=X, columns=boston.feature_names)
-boston_df['target'] = y
-# Split the dataset into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2,
-random_state=42)
-# Initialize Linear Regression model
-linear_regression = LinearRegression()
-# Train the model
-linear_regression.fit(X_train, y_train)
-# Make predictions on the testing set
-y_pred = linear_regression.predict(X_test)
-# Evaluate the model's performance
-mse = mean_squared_error(y_test, y_pred)
-r2 = r2_score(y_test, y_pred)
-print("Mean Squared Error:", mse)
-print("R-squared Score:", r2)
-Output:
-
-
-9. Write a program to implement a decision tree classifier using scikit-learn and
-visualize the decision tree and understand its splits.
-import numpy as np
-import pandas as pd
-from sklearn.datasets import load_iris
-from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier, plot_tree
-import matplotlib.pyplot as plt
-# Load Iris dataset
-iris = load_iris()
-X = iris.data
-y = iris.target
-# Split the dataset into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-# Initialize Decision Tree classifier
-decision_tree = DecisionTreeClassifier()
-# Train the classifier
-decision_tree.fit(X_train, y_train)
-# Visualize the decision tree
-plt.figure(figsize=(12, 8))
-plot_tree(decision_tree, feature_names=iris.feature_names,
-class_names=iris.target_names, filled=True)
-plt.show()
-Output:
-
-
-10. Write a program to Implement K-Means clustering and Visualize clusters.
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.datasets import make_blobs
-from sklearn.cluster import KMeans
-# Generate sample data
-X, y = make_blobs(n_samples=500, centers=4, cluster_std=0.8, random_state=42)
-# Create a K-Means clusterer with 4 clusters
-kmeans = KMeans(n_clusters=4, random_state=42)
-# Fit the data
-kmeans.fit(X)
-# Get cluster labels
-labels = kmeans.labels_
-# Plot the data with cluster labels
-plt.figure(figsize=(8, 6))
-plt.scatter(X[:, 0], X[:, 1], c=labels, cmap='viridis')
-plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s=100,
-c='red', label='Centroids')
-plt.title('K-Means Clustering')
-plt.xlabel('X')
-plt.ylabel('Y')
-plt.legend()
-plt.show()
-Output:
+Program 1: Creating “Hello world” Application.
+XML CODE:
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:id="@+id/main"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ tools:context=".MainActivity">
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Hello World!"
+ app:layout_constraintBottom_toBottomOf="parent"
+ app:layout_constraintEnd_toEndOf="parent"
+ app:layout_constraintStart_toStartOf="parent"
+ app:layout_constraintTop_toTopOf="parent"
+ app:layout_constraintVertical_bias="0.438" />
+ <Button
+ android:id="@+id/hello"
+ android:layout_width="309dp"
+ android:layout_height="166dp"
+ android:background="#535538"
+ android:text="click Me"
+ app:layout_constraintBottom_toBottomOf="parent"
+ app:layout_constraintEnd_toEndOf="parent"
+ app:layout_constraintHorizontal_bias="0.627"
+ app:layout_constraintStart_toStartOf="parent"
+ app:layout_constraintTop_toTopOf="parent"
+ app:layout_constraintVertical_bias="0.55" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+MainActivity.java
+package com.example.myapplication1;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.activity.EdgeToEdge;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+public class MainActivity extends AppCompatActivity {
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+ Button b;
+ b=findViewById(R.id.hello);
+ b.setOnClickListener(new View.OnClickListener() {
+ @Override
+ public void onClick(View v) {
+ Toast.makeText(MainActivity.this,"Hey! we are using Android
+Application",Toast.LENGTH_SHORT).show();
+ }
+ });
+ }
+}
+SNAPSHOT
 
 
 
-  </div>
+Program 2: Creating an application that displays message based on the screen orientation.
+XML CODE:
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:id="@+id/main"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ tools:context=".MainActivity">
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Hello World!"
+ app:layout_constraintBottom_toBottomOf="parent"
+ app:layout_constraintEnd_toEndOf="parent"
+ app:layout_constraintStart_toStartOf="parent"
+ app:layout_constraintTop_toTopOf="parent"
+ app:layout_constraintVertical_bias="0.438" />
+ <Button
+ android:id="@+id/hello"
+ android:layout_width="309dp"
+ android:layout_height="166dp"
+ android:background="#535538"
+ android:text="click Me"
+ app:layout_constraintBottom_toBottomOf="parent"
+ app:layout_constraintEnd_toEndOf="parent"
+ app:layout_constraintHorizontal_bias="0.627"
+ app:layout_constraintStart_toStartOf="parent"
+ app:layout_constraintTop_toTopOf="parent"
+ app:layout_constraintVertical_bias="0.55" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+MainActivity.java
+package com.example.myapplication3;
+import android.content.pm.ActivityInfo;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
+import android.widget.Button;
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+public class MainActivity extends AppCompatActivity{
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ EdgeToEdge.enable(this);
+ setContentView(R.layout.activity_main);
+ Button l,p;
+ l = findViewById(R.id.button);
+ p = findViewById(R.id.button2);
+ l.setOnClickListener(new View.OnClickListener() {
+ @Override
+ public void onClick(View v) {
+setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+ Toast.makeText(MainActivity.this, "Hey We are in Landscape",
+Toast.LENGTH_SHORT).show();
+ }
+ });
+ p.setOnClickListener(new View.OnClickListener() {
+ @Override
+ public void onClick(View v) {
+setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+ Toast.makeText(MainActivity.this, "Hey We are in Portrait Orientation",
+Toast.LENGTH_SHORT).show();
+ }
+ });
+ }
+}
+SNAPSHOTS
 
-  <script>
-    function copyContent() {
-      const content = document.getElementById("noteContent").innerText;
-      navigator.clipboard.writeText(content).then(() => {
-        alert("Content copied to clipboard!");
-      });
-    }
-  </script>
+
+
+Program 3: Create an application to develop Login window using UI controls.
+XML CODE:
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:id="@+id/main"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ tools:context=".MainActivity"
+ android:background="@drawable/bg_outer">
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:gravity="center"
+ android:layout_centerInParent="true"
+ android:orientation="vertical"
+ android:background="@drawable/bg_inner"
+ android:padding="30dp" >
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="LOGIN PAGE"
+ android:textSize="32sp"
+ android:textStyle="bold"
+ android:fontFamily="sans-serif-condensed-medium"
+ android:textColor="@color/black"
+ android:paddingBottom="20dp" />
+ <EditText
+ android:id="@+id/editTextUsername"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginBottom="16dp"
+ android:hint="Username"
+ android:minHeight="48dp" />
+ <EditText
+ android:id="@+id/editTextPassword"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_below="@id/editTextUsername"
+ android:layout_marginBottom="16dp"
+ android:hint="Password"
+ android:inputType="textPassword"
+ android:minHeight="48dp" />
+ <Button
+ android:id="@+id/buttonLogin"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Login"
+ android:layout_below="@id/editTextPassword"/>
+ </LinearLayout>
+</RelativeLayout>
+bg_outer.xml (Inside Drawable Folder)
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+ <corners android:radius="12dp" />
+ <gradient
+ android:startColor="#B388FF"
+ android:endColor="#397C9A"
+ android:angle="100"/>
+</shape>
+bg_inner.xml (Inside Drawable Folder)
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+ <gradient
+ android:startColor="#84FFFF"
+ android:endColor="#f08"
+ android:angle="100"/>
+ <corners android:radius="20dp"/>
+</shape>
+MainActivity.java
+package com.example.myapplication4;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import com.example.myapplication4.R;
+public class MainActivity extends AppCompatActivity {
+ private EditText editTextUsername,editTextPassword;
+ private Button buttonLogin;
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ EdgeToEdge.enable(this);
+ setContentView(R.layout.activity_main);
+ editTextUsername = findViewById(R.id.editTextUsername);
+ editTextPassword = findViewById(R.id.editTextPassword);
+ buttonLogin = findViewById(R.id.buttonLogin);
+ buttonLogin.setOnClickListener(new View.OnClickListener() {
+ @Override
+ public void onClick(View v) {
+ String username = editTextUsername.getText().toString().trim();
+ String password = editTextPassword.getText().toString().trim();
+ if(username.equals("admin") && password.equals("pass")){
+ Toast.makeText(MainActivity.this, "Login successful",
+ Toast.LENGTH_SHORT).show();
+ } else {
+ Toast.makeText(MainActivity.this, "Invalid username or password",
+ Toast.LENGTH_SHORT).show();
+ }
+ }
+ });
+ }
+}
+SNAPSHOTS
+
+
+
+Program 4: Create an application to implement new activity using explicit intent, implicit
+intent and content provider.
+XML CODE:
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:id="@+id/main"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ tools:context=".MainActivity">
+ <Button
+ android:id="@+id/button"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Explicit Button"
+ app:layout_constraintBottom_toBottomOf="parent"
+ app:layout_constraintEnd_toEndOf="parent"
+ app:layout_constraintStart_toStartOf="parent"
+ app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+MainActivity.java:
+package com.example.myapplication5;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+public class MainActivity extends AppCompatActivity {
+ Button btnExplicitContent;
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+ btnExplicitContent=findViewById(R.id.button);
+ btnExplicitContent.setOnClickListener(new View.OnClickListener() { @Override
+ public void onClick(View view) {
+ Intent intent = new Intent(MainActivity.this,
+ SecondActivity.class);
+ startActivity(intent);
+ }
+ });
+ }
+}
+activity_second.xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:id="@+id/main"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ tools:context=".SecondActivity">
+ <Button
+ android:id="@+id/button2"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Implicit Button"
+ app:layout_constraintBottom_toBottomOf="parent"
+ app:layout_constraintEnd_toEndOf="parent"
+ app:layout_constraintStart_toStartOf="parent"
+ app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+SecondActivity.java
+package com.example.myapplication5;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+public class SecondActivity extends AppCompatActivity {
+ Button btnImplicitContent;
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_second);
+ btnImplicitContent = findViewById(R.id.button2);
+ btnImplicitContent.setOnClickListener(new View.OnClickListener() {
+ @Override
+ public void onClick(View view) {
+ Uri webpage = Uri.parse("https://www.google.com");
+ Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+ startActivity(intent);
+ }
+ });
+ }
+}
+SNAPSHOT
+
+
+
+Program 5: Create an application that displays custom designed Opening Screen.
+XML CODE:
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+ xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:id="@+id/idRLContainer"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:orientation="vertical"
+ android:background="@drawable/back_drawable">
+ <TextView
+ android:id="@+id/idTVHeading"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_centerInParent="true"
+ android:layout_margin="20dp"
+ android:gravity="center"
+ android:padding="10dp"
+ android:text="Welcome to My App"
+ android:textAlignment="center"
+ android:textColor="@color/white"
+ android:textSize="24sp"
+ android:textStyle="bold" />
+</RelativeLayout>
+MainActivity.java
+package com.example.a4thprogram;
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+import android.widget.RelativeLayout;
+import com.example.a4thprogram.R;
+public class MainActivity extends AppCompatActivity {
+ private RelativeLayout containerRL;
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+ // Initialize the RelativeLayout container
+ containerRL = findViewById(R.id.idRLContainer);
+ // Set background for the RelativeLayout using the drawable resource
+ containerRL.setBackground(getResources().getDrawable(R.drawable.back_drawable));
+ }
+}
+back_drawable: (Inside Drawable Folder)
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+ android:shape="rectangle">
+ <!-- on below line we are adding gradient and specifying start and end color with angle -->
+ <gradient
+ android:angle="270"
+ android:endColor="@color/white"
+ android:startColor="#0F9D58" />
+</shape>
+SNAPSHOT:
+
+
+Program 6: Create an UI with all views
+package com.example.all_views;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+public class MainActivity extends AppCompatActivity {
+ Button sub;
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ EdgeToEdge.enable(this);
+ setContentView(R.layout.activity_main);
+ Button sub = findViewById(R.id.submit);
+ sub.setOnClickListener(new View.OnClickListener() {
+ @Override
+ public void onClick(View v) {
+ showMessage(MainActivity.this, "User Information", "Succesfully Cpmpleted");
+ }
+ });
+ String[] item = new String[]{"India", "Pakistan", "China", "America", "England"};
+ ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+android.R.layout.simple_spinner_item, item);
+ adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+ @SuppressLint("WrongViewCast") Spinner spinner = findViewById(R.id.country);
+ spinner.setAdapter(adapter);
+ }
+ public void showMessage(Context con, String t, String msg) {
+ AlertDialog.Builder builder = new AlertDialog.Builder(con);
+ builder.setTitle(t);
+ builder.setMessage(msg);
+ builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+ @Override
+ public void onClick(DialogInterface dialog, int which) {
+ dialog.dismiss();
+ }
+ });
+ builder.show();
+ }
+}
+ACTIVITY_MAIN.XML
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:id="@+id/main"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ tools:context=".MainActivity"
+ android:gravity="center"
+ android:orientation="vertical"
+ android:padding="30dp"
+ android:background="@drawable/bg_outer">
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="User Information!"
+ android:textSize="30sp"
+ android:textStyle="bold"
+ android:textColor="#26369C" />
+ <ImageView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:src="@drawable/img1" />
+ <ToggleButton
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:textOn="Active"
+ android:textOff="Inactive"/>
+ <View
+ android:layout_width="match_parent"
+ android:layout_height="40dp"/>
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:paddingTop="30dp"
+ android:paddingBottom="30dp"
+ android:paddingLeft="5dp"
+ android:paddingRight="5dp"
+ android:orientation="vertical"
+ android:background="@drawable/bg_inner">
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="horizontal"
+ android:padding="5dp">
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="NAME"
+ android:textSize="20sp"
+ android:textStyle="bold"
+ android:textColor="#26389C"
+ android:padding="15dp"/>
+ <EditText
+ android:layout_width="match_parent"
+ android:layout_height="60dp"
+ android:id="@+id/name"
+ android:background="@drawable/bg"
+ android:padding="15dp"/>
+</LinearLayout>
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="horizontal"
+ android:padding="5dp">
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="E-mail"
+ android:textSize="20sp"
+ android:textStyle="bold"
+ android:textColor="#26389C"
+ android:padding="15dp"/>
+ <EditText
+ android:layout_width="match_parent"
+ android:layout_height="60dp"
+ android:id="@+id/email"
+ android:ems="10"
+ android:inputType="textEmailAddress"
+ android:background="@drawable/bg"
+ android:padding="15dp"/>
+ </LinearLayout>
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="horizontal"
+ android:padding="5dp">
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Gender"
+ android:textSize="20sp"
+ android:textStyle="bold"
+ android:textColor="#26389C"
+ android:padding="15dp"
+ android:paddingEnd="40dp"/>
+ <RadioGroup
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:background="@drawable/bg"
+ android:orientation="horizontal"
+ android:id="@+id/gender">
+ <RadioButton
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:id="@+id/male"
+ android:padding="15dp"
+ android:text="Male"
+ android:textColor="#26389C"
+ android:textSize="20sp"
+ android:textStyle="bold"/>
+ <RadioButton
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:id="@+id/female"
+ android:padding="15dp"
+ android:text="Female"
+ android:textColor="#26389C"
+ android:textSize="20sp"
+ android:textStyle="bold"/>
+ </RadioGroup>
+ </LinearLayout>
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="horizontal"
+ android:padding="5dp">
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Country"
+ android:textSize="20sp"
+ android:textStyle="bold"
+ android:textColor="#26389C"
+ android:padding="15dp"
+ android:paddingEnd="5dp"/>
+ <Spinner
+ android:id="@+id/country"
+ android:layout_width="match_parent"
+ android:layout_height="60dp"
+ android:padding="15dp"
+ android:background="@drawable/bg"/>
+ </LinearLayout>
+ </LinearLayout>
+ <View
+ android:layout_width="match_parent"
+ android:layout_height="40dp"/>
+ <Button
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:id="@+id/submit"
+ android:padding="15dp"
+ android:background="@drawable/bg"
+ android:text="Submit"
+ android:textColor="#26389C"
+ android:textSize="20sp"
+ android:textStyle="bold"/>
+</LinearLayout>
+BG.XML
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+<solid android:color="#2860F367"/>
+ <corners android:radius="30dp"/>
+ <stroke android:color="#00BFA5"
+ android:width="2dp"/>
+</shape>
+BG_INNER.XML
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+<gradient android:startColor="#64F194"
+ android:endColor="#B242C5"
+ android:angle="120"/>
+ <corners android:radius="20dp"
+ android:topLeftRadius="70dp"
+ android:bottomLeftRadius="70dp"/>
+</shape>
+BG_OUTER.XML
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+<gradient android:startColor="#64F194"
+ android:endColor="#B242C5"
+ android:angle="120"/>
+ <corners android:radius="20dp"
+ android:topLeftRadius="70dp"
+ android:bottomLeftRadius="70dp"/>
+</shape>
+Snapshots:
+
+
+
+Program 7: Create menu in Application
+Click New Project, the New Project Dialog box appears.
+Choose Empty Views Activity then click Next.
+Specify the Name of your project, Select the Language as Java, and Select the
+Minimum SDK as API 16 (“Jelly Bean”, Android 4.1). Click Finish Button.
+To create another activity for Home Page, Right Click AppNewActivity Empty Views
+Activity. A New Android Activity dialog box appears, Specify theName of the activity as
+HomeScreen then click Finish.
+To create a Menu Resource File:
+Right-click on the res directory in your Android project, navigate to New > Android
+Resource File, and name the file menus.xml, Root element as Menu and update the
+following content.
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/php"
+android:title="PHP"/>
+<item android:id="@+id/java"
+android:title="JAVA"/>
+<item android:id="@+id/csharp"
+android:title="C#"/>
+</menu>
+The menu design is as follows:
+Update the following code in MainActivity.java
+package com.example.menuexample;import
+android.content.Intent;
+import android.os.Bundle; import
+android.view.Menu;
+import android.view.MenuInflater;import
+android.view.MenuItem; import
+android.widget.Toast;
+import androidx.activity.EdgeToEdge;import
+androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;import
+androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat; public class
+MainActivity extends AppCompatActivity {
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState); EdgeToEdge.enable(this);
+setContentView(R.layout.activity_main);
+}
+@Override
+public boolean onCreatePanelMenu(int featureId, @NonNull Menu menu) {MenuInflater
+inflater=getMenuInflater(); inflater.inflate(R.menu.menus,menu);
+return true;
+}
+@Override
+public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+if(item.getItemId()==R.id.php) {
+Toast.makeText(this, "Php Page", Toast.LENGTH_SHORT).show();
+}
+if(item.getItemId()==R.id.java) {
+Toast.makeText(this, "Java Page", Toast.LENGTH_SHORT).show();
+}
+if(item.getItemId()==R.id.csharp) {
+Toast.makeText(this, "C# Page", Toast.LENGTH_SHORT).show();
+}
+return super.onOptionsItemSelected(item);
+}
+}
+Set the Uses-Permission in AndroidManifest.xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools">
+<uses-permission android:name="android.permission.INTERNET" />
+<application android:allowBackup="true"
+android:dataExtractionRules="@xml/data_extraction_rules"
+android:fullBackupContent="@xml/backup_rules"
+android:icon="@mipmap/ic_launcher"
+android:label="@string/app_name"
+android:roundIcon="@mipmap/ic_launcher_round"
+android:supportsRtl="true"
+android:theme="@style/Theme.AppCompat.Light"
+tools:targetApi="31">
+<activity android:name=".MainActivity"
+android:exported="true">
+<intent-filter>
+<action android:name="android.intent.action.MAIN" />
+<category android:name="android.intent.category.LAUNCHER" />
+</intent-filter>
+</activity>
+</application>
+</manifest>
+Output
+
+
+
+Program 8: Read/ write the Local data.
+activity_main.xml
+<?xml version="1.0" encoding="utf8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/resauto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity"
+android:orientation="vertical">
+<TextView
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:text="User Name"></TextView>
+<EditText
+android:id="@+id/etUserName"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+></EditText>
+<TextView
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:text="Password"></TextView>
+<EditText
+android:id="@+id/etPassword"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+></EditText>
+<Button
+android:id="@+id/btnsave"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Save" />
+<Button
+android:id="@+id/btnnext"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Next" />
+</LinearLayout>
+MainActivity.java
+package com.bca.localdata;
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+public class MainActivity extends AppCompatActivity {
+Button btnsave,btnnext;
+EditText etUserName,etPassword;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+btnsave=(Button) findViewById(R.id.btnsave);
+btnnext = (Button) findViewById(R.id.btnnext);
+etUserName = (EditText)findViewById(R.id.etUserName);
+etPassword = (EditText)findViewById(R.id.etPassword);
+btnsave.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View view) {
+// Writing data to SharedPreferences
+SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs",
+Context.MODE_PRIVATE);
+SharedPreferences.Editor editor = sharedPreferences.edit();
+editor.putString("username",
+etUserName.getText().toString());
+editor.putString("password",
+etPassword.getText().toString());
+editor.apply();
+Toast.makeText(getApplicationContext(),"Saved
+successfully",Toast.LENGTH_LONG).show();
+}
+});
+btnnext.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View view) {
+Intent intent = new
+Intent(getApplicationContext(),MainActivity2.class);
+startActivity(intent);
+}
+});
+}
+}
+activity_main2.xml
+<?xml version="1.0" encoding="utf8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/resauto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity2"
+android:orientation="vertical">
+<Button android:id="@+id/btnFetch"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Fetch" />
+<TextView
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:text="User Name"></TextView>
+<EditText
+android:id="@+id/etUserName"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+></EditText>
+<TextView
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:text="Password"></TextView>
+<EditText
+android:id="@+id/etPassword"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+></EditText>
+</LinearLayout>
+MainActivity2.java
+package com.bca.localdata;
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+public class MainActivity2 extends AppCompatActivity {
+Button btnFetch;
+EditText etUserName,etPassword;
+@Override
+protected void onCreate(Bundle savedInstanceState)
+{
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main2);
+btnFetch = (Button) findViewById(R.id.btnFetch);
+etUserName = (EditText)findViewById(R.id.etUserName);
+etPassword = (EditText)findViewById(R.id.etPassword);
+btnFetch.setOnClickListener(new View.OnClickListener()
+{ @Override
+public void onClick(View view)
+{
+// Reading data from SharedPreferences
+SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs",
+Context.MODE_PRIVATE);
+String username = sharedPreferences.getString("username", "");
+String password = sharedPreferences.getString("password", "");
+etUserName.setText(username);
+etPassword.setText(password);
+}
+});
+}
+}
+Output
+
+
+
+Program 9: Create / Read / Write data with database (SQLite).
+Steps:
+Click Start - Android Studio, a Welcome to Android
+Studio dialog box will appear. Click New Project, the
+New Project Dialog box appears.
+Choose Empty Views Activity then click Next.
+Specify the Name of your project, Select the Language as Java, and Select the
+SDK as API 24(“Nougat”,Android 7.0).Click Finish Button.
+Update the following code in activity_main.xml, activity_view.xml,
+MainActivity.java and ViewActivity.java
+Create a class file right click app- new- java class name it as student and update
+the following code in student.java
+To Create another activity right click on app – new activity-Empty views
+Activity.
+Update the following code in activity_edit.xml and EditActivity.java.
+Click Run App or Shift+F10 to execute the application.
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"android:gravity="center"
+tools:context=".MainActivity">
+<LinearLayout
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:orientation="vertical" android:gravity="center">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content" android:text="Course
+Registation" android:textColor="@color/colorAccent"
+android:textSize="30dp"
+/>
+</LinearLayout>
+<LinearLayout
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:orientation="horizontal" android:gravity="center">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"android:text="Name"
+/>
+<EditText
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_weight="1" android:ems="10"
+android:id="@+id/name"
+android:textAlignment="center"
+/>
+</LinearLayout>
+<LinearLayout
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:orientation="horizontal" android:gravity="center">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Course"
+/>
+<EditText
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_weight="1" android:ems="10"
+android:id="@+id/course"
+android:textAlignment="center"
+/>
+</LinearLayout>
+<LinearLayout
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:orientation="horizontal" android:gravity="center">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"android:text="Fee"
+/>
+<EditText
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_weight="1" android:ems="10"
+android:id="@+id/fee"
+android:textAlignment="center"
+/>
+</LinearLayout>
+<LinearLayout
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:orientation="horizontal" android:gravity="center">
+<Button
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_weight="1" android:id="@+id/bt1"
+android:text="Ok"
+android:background="@color/colorPrimary"
+/>
+<Button
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_weight="1" android:id="@+id/bt2"
+android:text="View"
+android:background="@color/colorAccent"
+/>
+</LinearLayout>
+</LinearLayout>
+MainActivity.java
+package com.bca.sqlite;
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement
+;import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import ndroid.widget.EditText;
+import android.widget.Toast;
+public class MainActivity extends AppCompatActivity {
+EditText ed1,ed2,ed3;
+Button b1,b2;
+@Override
+protected void onCreate(Bundle savedInstanceState)
+{super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+ed1 = findViewById(R.id.name);
+ed2 = findViewById(R.id.course);
+ed3 = findViewById(R.id.fee);
+b1 = findViewById(R.id.bt1);
+b2 = findViewById(R.id.bt2);
+b2.setOnClickListener(new View.OnClickListener()
+{@Override
+public void onClick(View v)
+{
+Intent i = new Intent(getApplicationContext(),ViewActivity.class);
+startActivity(i);
+}
+});
+b1.setOnClickListener(new View.OnClickListener() {@Override
+public void onClick(View v) {
+insert();
+}
+});
+}
+public void insert()
+{
+try
+{
+String name = ed1.getText().toString();
+String course = ed2.getText().toString();
+String fee = ed3.getText().toString();
+SQLiteDatabase db = openOrCreateDatabase("SliteDb",
+Context.MODE_PRIVATE, null);
+db.execSQL("CREATE TABLE IF NOT EXISTS records(id INTEGER
+PRIMARY KEY AUTOINCREMENT,name VARCHAR,course
+VARCHAR,fee VARCHAR)");
+String sql = "insert into records(name,course,fee)values('" +name + "','" +
+course + "','" + fee + "')";
+SQLiteStatementstatement = db.compileStatement(sql);
+statement.execute();
+Toast.makeText(this,"Record addded",Toast.LENGTH_LONG).show();
+ed1.setText("");
+ed2.setText("");
+ed3.setText("");
+ed1.requestFocus();
+}
+catch (Exception ex)
+{
+Toast.makeText(this,"Record Fail",Toast.LENGTH_LONG).show();
+}
+}
+}
+/* Add Student.class file (Right click on package name */
+Student.class
+package com.bca.sqlite;
+public class Student {
+String id;
+String name;
+String course;
+String fee;
+String titles;
+}
+activity_view.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".ViewActivity"
+android:orientation="vertical">
+<ListView
+android:layout_width="match_parent"
+android:layout_height="match_parent"android:id="@+id/lst1"
+/>
+</LinearLayout>
+ViewActivity.java
+package com.bca.sqlite;
+import androidx.appcompat.app.AppCompatActivity;
+import ndroid.content.Context;
+import android.content.Intent;
+import ndroid.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.view.View;
+import ndroid.widget.AdapterView;
+import ndroid.widget.ArrayAdapter;
+import android.widget.ListView;
+import java.util.ArrayList;
+public class ViewActivity extends AppCompatActivity {
+ListView lst1;
+ArrayList<String> titles = new ArrayList<String>();
+ArrayAdapter arrayAdapter;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_view);
+SQLiteDatabase db = openOrCreateDatabase("SliteDb",Context.MODE_PRIVATE,null);
+lst1 = findViewById(R.id.lst1);
+final Cursor c = db.rawQuery("select * from records",null);
+int id = c.getColumnIndex("id");
+int name = c.getColumnIndex("name");
+int course = c.getColumnIndex("course");
+int fee = c.getColumnIndex("fee");
+titles.clear();
+arrayAdapter = new ArrayAdapter(this,
+androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,titles);
+lst1.setAdapter(arrayAdapter);
+final ArrayList<Student> stud = new ArrayList<Student>();
+if(c.moveToFirst())
+{
+do {
+Student stu = new Student();
+stu.id = c.getString(id);
+stu.name = c.getString(name);
+stu.course = c.getString(course)
+;stu.fee = c.getString(fee);
+stud.add(stu);
+titles.add(c.getString(id) + " \t " + c.getString(name) + "
+\t " + c.getString(course) + " \t " + c.getString(fee) );
+} while(c.moveToNext());
+arrayAdapter.notifyDataSetChanged();
+lst1.invalidateViews();
+}
+lst1.setOnItemClickListener(new AdapterView.OnItemClickListener()
+{@Override
+public void onItemClick(AdapterView parent, View view, int position, long id) {
+String aa = titles.get(position).toString();
+Student stu = stud.get(position);
+Intent i = new
+Intent(getApplicationContext(),EditActivity.class);
+i.putExtra("id",stu.id);
+i.putExtra("name",stu.name);
+i.putExtra("course",stu.course);
+i.putExtra("fee",stu.fee);
+startActivity(i);
+}
+});
+}
+}
+activity_edit.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent" android:layout_height="match_parent"
+tools:context=".EditActivity" android:orientation="vertical">
+<LinearLayout
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:orientation="vertical"
+android:gravity="center">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Course Registation"
+android:textColor="@color/colorAccent"
+android:textSize="30dp"
+/>
+</LinearLayout>
+<LinearLayout
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:orientation="horizontal" android:gravity="center">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="ID"
+/>
+<EditText
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_weight="1" android:ems="10"
+android:id="@+id/id"
+android:textAlignment="center"
+/>
+</LinearLayout>
+<LinearLayout
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:orientation="horizontal" android:gravity="center">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Name"
+/>
+<EditText
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_weight="1" android:ems="10"
+android:id="@+id/name"
+android:textAlignment="center"
+/>
+</LinearLayout>
+<LinearLayout
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:orientation="horizontal" android:gravity="center">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Course"/>
+<EditText
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_weight="1" android:ems="10"
+android:id="@+id/course"
+android:textAlignment="center"
+/>
+</LinearLayout>
+<LinearLayout
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:gravity="center">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Fee"
+/>
+<EditText
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_weight="1"
+android:ems="10"
+android:id="@+id/fee"
+android:textAlignment="center"
+/>
+</LinearLayout>
+<LinearLayout
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:orientation="horizontal" android:gravity="center">
+<Button
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_weight="1" android:id="@+id/bt1"
+android:text="Edit"
+android:background="@color/colorPrimary"
+/>
+<Button
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_weight="1" android:id="@+id/bt2"
+android:text="Delete"
+android:background="@color/colorAccent"
+/>
+<Button
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_weight="1" android:id="@+id/bt3"
+android:text="Back"
+android:background="@color/colorPrimaryDark"
+/>
+</LinearLayout>
+</LinearLayout>
+EditActivity.java
+package com.bca.sqlite;
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText; import android.widget.Toast;
+public class EditActivity extends AppCompatActivity {
+EditText ed1,ed2,ed3,ed4;
+Button b1,b2,b3; @Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState); setContentView(R.layout.activity_edit);
+ed1 = findViewById(R.id.name);
+ed2 = findViewById(R.id.course);
+ed3 = findViewById(R.id.fee);
+ed4 = findViewById(R.id.id);
+b1 = findViewById(R.id.bt1);
+b2 = findViewById(R.id.bt2);
+b3 = findViewById(R.id.bt3);
+Intent i = getIntent();
+String t1 = i.getStringExtra("id").toString();
+String t2 = i.getStringExtra("name").toString();
+String t3 = i.getStringExtra("course").toString();
+String t4 = i.getStringExtra("fee").toString(); ed4.setText(t1);
+ed1.setText(t2); ed2.setText(t3); ed3.setText(t4);
+b2.setOnClickListener(new View.OnClickListener()
+{@Override
+public void onClick(View v) { try
+{
+String id = ed4.getText().toString();SQLiteDatabase db =
+openOrCreateDatabase("SliteDb",Context.MODE_PRIVATE,null);
+String sql = "delete from records where id = " + id + "";
+SQLiteStatement statement = db.compileStatement(sql);
+statement.execute();
+Toast.makeText(EditActivity.this,"RecordDeleted",Toast.LENGTH_LONG).show();
+ed1.setText("");
+ed2.setText("");
+ed3.setText("");
+ed1.requestFocus();
+}
+catch (Exception ex)
+{
+Toast.makeText(EditActivity.this,"Record Fail",Toast.LENGTH_LONG).show();
+}
+}
+});
+b3.setOnClickListener(new View.OnClickListener() {@Override
+public void onClick(View v) {
+Intent i = new Intent(getApplicationContext(),ViewActivity.class);
+startActivity(i);
+}
+});
+b1.setOnClickListener(new View.OnClickListener() {@Override
+public void onClick(View v) {
+try {
+String name = ed1.getText().toString();
+String course = ed2.getText().toString();
+String fee = ed3.getText().toString();
+String id = ed4.getText().toString();
+SQLiteDatabase db = openOrCreateDatabase("SliteDb",Context.MODE_PRIVATE, null);
+String sql = "update records set name = '" + name + "',course='" +course +
+"',fee='" + fee + "' where id= " + id + "";
+SQLiteStatementstatement = db.compileStatement(sql);
+statement.execute();
+Toast.makeText(EditActivity.this, "Record Updated",
+Toast.LENGTH_LONG).show();
+ed1.setText("");
+ed2.setText("");
+ed3.setText("");
+ed1.requestFocus();
+} catch (Exception ex) {
+Toast.makeText(EditActivity.this, "Record Fail",
+Toast.LENGTH_LONG).show();
+}
+}
+});
+} }
+Output
+
+
+
+Program 10: Create an application to send SMS and receive SMS
+Steps:
+Click Start- Android Studio, a Welcome to Android Studio dialog box will appear.
+Click New Project, the New Project Dialog box appears.
+Choose Empty Views Activity then click Next.
+Specify the Name of your project, Select the Language as Java, and Select the
+SDK as API 24(“Nougat”,Android 7.0).Click Finish Button.
+Update the following code in activity_main.xml and MainActivity.java
+Click Run app or shift+F10 to execute the application.
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/white" tools:context=".MainActivity">
+<EditText
+android:id="@+id/editTextPhoneNumber"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:hint="Enter phone number"
+android:layout_margin="16dp"/>
+<EditText
+android:id="@+id/editTextMessage"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:hint="Enter message"
+android:layout_below="@id/editTextPhoneNumber"
+android:layout_margin="16dp"/>
+<Button
+android:id="@+id/buttonSend"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Send"
+android:layout_below="@id/editTextMessage"
+android:layout_alignParentEnd="true"
+android:layout_marginEnd="16dp"
+android:onClick="sendMessage" tools:ignore="UsingOnClickInXml" />
+<TextView
+android:id="@+id/textViewReceivedMessages"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_below="@id/buttonSend"
+android:layout_marginStart="16dp"
+android:layout_marginTop="16dp"
+android:layout_marginEnd="16dp"
+android:layout_marginBottom="16dp"
+android:textColor="@color/black" />
+</RelativeLayout>
+MainActivity.java
+package com.bca.sms;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.telephony.SmsManager;
+import android.telephony.SmsMessage;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.Manifest;
+import androidx.appcompat.app.AppCompatActivity;
+public class MainActivity extends AppCompatActivity
+{
+private static final int SMS_PERMISSION_CODE = 101;
+private EditText editTextPhoneNumber;
+private EditText editTextMessage;
+private TextView textViewReceivedMessages;
+@Override
+protected void onCreate(Bundle savedInstanceState)
+{
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+editTextPhoneNumber = findViewById(R.id.editTextPhoneNumber);
+editTextMessage = findViewById(R.id.editTextMessage);
+textViewReceivedMessages = findViewById(R.id.textViewReceivedMessages);
+// Request SMS permissions if not granted
+if (!checkSMSPermission())
+{
+requestSMSPermission();
+}
+// Register SMS receiver
+IntentFilter intentFilter = new IntentFilter();
+intentFilter.addAction("android.provider.Telephony.SMS_RECEIVED");
+registerReceiver(smsReceiver, intentFilter);
+}
+@Override
+protected void onDestroy()
+{
+super.onDestroy();
+unregisterReceiver(smsReceiver);
+}
+// Button click listener for sending SMS
+public void sendMessage(View view) { String phoneNumber =
+editTextPhoneNumber.getText().toString().trim();
+String message = editTextMessage.getText().toString();
+if (phoneNumber.isEmpty())
+{
+Toast.makeText(this, "Please enter a valid phone number",
+Toast.LENGTH_SHORT).show();
+return;
+}
+try {
+SmsManager smsManager = SmsManager.getDefault();
+smsManager.sendTextMessage(phoneNumber, null, message, null, null);
+Toast.makeText(this, "Message sent", Toast.LENGTH_SHORT).show();
+}
+catch (IllegalArgumentException e)
+{
+Toast.makeText(this, "Invalid phone number format",
+Toast.LENGTH_SHORT).show();
+} catch (Exception e) {
+Toast.makeText(this, "Failed to send message", Toast.LENGTH_SHORT).show();
+e.printStackTrace();
+}
+}
+// Check if SMS permission is granted
+private boolean checkSMSPermission() {
+return ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) ==
+PackageManager.PERMISSION_GRANTED;
+}
+// Request SMS permission
+private void requestSMSPermission() { ActivityCompat.requestPermissions(this, new
+String[]{Manifest.permission.SEND_SMS}, SMS_PERMISSION_CODE);
+}
+// SMS receiver
+private final BroadcastReceiver smsReceiver = new BroadcastReceiver()
+{ @Override
+public void onReceive(Context context, Intent intent) { Bundle bundle = intent.getExtras();
+if (bundle != null)
+{
+Object[] pdus = (Object[]) bundle.get("pdus");
+if (pdus != null) {
+for (Object pdu : pdus)
+{
+SmsMessage smsMessage = SmsMessage.createFromPdu((byte[]) pdu);
+String senderPhoneNumber = smsMessage.getDisplayOriginatingAddress();
+String messageBody = smsMessage.getMessageBody();
+textViewReceivedMessages.append("From: " + senderPhoneNumber + "\n");
+textViewReceivedMessages.append("Message: " +
+messageBody + "\n\n");
+}
+}
+}
+}
+};
+}
+Output
+
+
+Program 11: Create an application to send an e-mail.
+Steps:
+Click Start- Android Studio, a Welcome to Android Studio dialog box will
+appear. Click New Project, the New Project Dialog box appears.
+Choose Empty Views Activity then click Next.
+Specify the Name of your project, Select the Language as Java, and Select the
+SDK as API 24(“Nougat”,Android 7.0).Click Finish Button.
+Update the following code in activity_main.xml and MainActivity.java
+Click Run app or shift+F10 to execute the application.
+activity_main.xml
+<?xml version="1.0" encoding="utf8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity">
+<EditText
+android:id="@+id/editTextTo"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:hint="To"/>
+<EditText
+android:id="@+id/editTextSubject"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_below="@id/editTextTo"
+android:hint="Subject"/>
+<EditText
+android:id="@+id/editTextMessage"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_below="@id/editTextSubject"
+android:hint="Message"/>
+<Button
+android:id="@+id/buttonSend"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_below="@id/editTextMessage"
+android:text="Send"/>
+</RelativeLayout>
+Mainactivity.java
+package com.bca.email;
+import androidx.appcompat.app.AppCompatActivity;
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+public class MainActivity extends AppCompatActivity {
+EditText editTextTo, editTextSubject, editTextMessage;
+Button buttonSend;
+@Override
+protected void onCreate(Bundle savedInstanceState)
+{
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+editTextTo = findViewById(R.id.editTextTo);
+editTextSubject = findViewById(R.id.editTextSubject);
+editTextMessage = findViewById(R.id.editTextMessage);
+buttonSend = findViewById(R.id.buttonSend);
+buttonSend.setOnClickListener(new View.OnClickListener()
+{
+@Override
+public void onClick(View v)
+{
+sendEmail();
+}
+});
+}
+@SuppressLint("QueryPermissionsNeeded")
+private void sendEmail() {
+String to = editTextTo.getText().toString().trim();
+String subject = editTextSubject.getText().toString().trim();
+String message = editTextMessage.getText().toString().trim();
+Intent intent = new Intent(Intent.ACTION_SEND);
+intent.setType("text/plain");
+intent.putExtra(Intent.EXTRA_EMAIL, new String[]{to});
+intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+intent.putExtra(Intent.EXTRA_TEXT, message);
+if (intent.resolveActivity(getPackageManager()) != null)
+{
+startActivity(Intent.createChooser(intent, "Choose an email client"));
+}
+}
+}
+OUTPUT
+
+
+
+Program 12: Display Map based on the Current/given location.
+Steps:
+Click Start- Android Studio, a Welcome to Android Studio dialog box will appear.
+Click New Project, the New Project Dialog box appears.
+Choose Empty Views Activity then click Next.
+Specify the Name of your project, Select the Language as Java, and Select the
+SDK as API 24(“Nougat”,Android 7.0).Click Finish Button.
+Update the following code in activity_main.xml, Androidmanifest.xml and
+MainActivity.java
+Click Run app or shift+F10 to execute the application.
+MainActivity.java
+import android.os.Bundle;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
+private GoogleMap mMap;
+private double latitude = 0.0;
+private double longitude = 0.0;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+// Obtain the SupportMapFragment and get notified when the map is ready to be used.
+SupportMapFragment mapFragment = (SupportMapFragment)
+getSupportFragmentManager()
+.findFragmentById(R.id.map);
+if (mapFragment != null) {
+mapFragment.getMapAsync(this);
+} else {
+Toast.makeText(this, "Map Fragment Not Found", Toast.LENGTH_SHORT).show();
+}
+}
+@Override
+public void onMapReady(@NonNull GoogleMap googleMap) {
+mMap = googleMap;
+// Add a marker at current or given location and move the camera
+LatLng location = new LatLng(latitude, longitude);
+mMap.addMarker(new MarkerOptions().position(location).title("Marker"));
+mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15));
+}
+}
+activity_main.xml
+<?xml version="1.0" encoding="utf8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity">
+<fragment
+android:id="@+id/map"
+android:name="com.google.android.gms.maps.SupportMapFragment"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:layout_alignParentTop="true"
+android:layout_alignParentBottom="true"
+android:layout_alignParentStart="true"
+android:layout_alignParentEnd="true" />
+</RelativeLayout>
+AndroidManifest.xml
+<?xml version="1.0" encoding="utf8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+package="com.yourpackage.yourappname">
+<usespermission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<usespermission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<usespermission android:name="android.permission.INTERNET" />
+<application
+android:allowBackup="true"
+android:icon="@mipmap/ic_launcher"
+android:label="@string/app_name"
+android:roundIcon="@mipmap/ic_launcher_round"
+android:supportsRtl="true"
+android:theme="@style/AppTheme">
+<! Google Maps API Key >
+<metadata
+android:name="com.google.android.geo.API_KEY"
+android:value="YOUR_API_KEY_HERE" />
+<activity android:name=".MainActivity">
+<intentfilter>
+<action android:name="android.intent.action.MAIN" />
+<category android:name="android.intent.category.LAUNCHER" />
+</intentfilter>
+</activity>
+</application>
+</manifest>
+
+
+
+Program 13: Create a sample application with login module(check user name and password)
+On successful login change Textview “Login Successful”. On login fail alert using Toast “login
+fail”
+Steps:
+Click Start- Android Studio, a Welcome to Android Studio dialog box will appear.
+Click New Project, the New Project Dialog box appears.
+Choose Empty Views Activity then click Next.
+Specify the Name of your project, Select the Language as Java, and Select the
+SDK as API 24(“Nougat”,Android 7.0).Click Finish Button.
+Update the following code in activity_main.xml and MainActivity.java
+Click Run app or shift+F10 to execute the application.
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity"
+android:orientation="vertical"
+android:padding="16dp">
+<TextView android:id="@+id/tvTitle"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:textSize="24sp"
+android:text="Login Form"
+android:layout_gravity="center"/>
+<TextView android:id="@+id/tvUserName"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:textSize="20sp"
+android:text="User Name" />
+<EditText
+android:id="@+id/etUsername"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:hint="Username"
+android:inputType="text"
+android:padding="8dp"
+android:layout_marginTop="16dp"
+android:layout_marginBottom="30dp"/>
+<TextView android:id="@+id/tvPassword"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:textSize="20sp"
+android:text="Password" />
+<EditText
+android:id="@+id/etPassword"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:hint="Password"
+android:inputType="textPassword"
+android:padding="8dp"
+android:layout_marginTop="16dp"
+android:layout_marginBottom="30dp"/>
+<Button
+android:id="@+id/btnLogin"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:text="Login"
+android:textSize="18sp"
+android:layout_marginTop="16dp"/>
+<TextView android:id="@+id/tvMessage"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:textSize="20sp"
+android:text="Password" />
+</LinearLayout>
+Mainactivity.java
+package com.bca.loginprgrm;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+public class MainActivity extends AppCompatActivity {
+EditText etUsername,etPassword; Button btnLogin;
+TextView tvMessage;
+@Override
+protected void onCreate(Bundle savedInstanceState)
+{
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+btnLogin = (Button) findViewById(R.id.btnLogin);
+etUsername = (EditText) findViewById(R.id.etUsername);
+etPassword = (EditText) findViewById(R.id.etPassword);
+tvMessage = (TextView) findViewById(R.id.tvMessage);
+btnLogin.setOnClickListener(new View.OnClickListener()
+{ @Override
+public void onClick(View view)
+{
+if(etUsername.getText().toString().isEmpty())
+{
+etUsername.setError("Enter User name");
+} else if (etPassword.getText().toString().isEmpty()) {
+etPassword.setError("Enter Password");
+}
+else if(etUsername.getText().toString().equals("isbr") &&
+etPassword.getText().toString().equals("isbr"))
+{
+tvMessage.setText("Valid Login");
+}
+else
+{
+tvMessage.setText("Invalid login");
+}
+}
+});
+}
+}
+OUTPUT
+
+
+
+
+Program14: Learn to deploy Android applications.
+Steps to Deploy an Android Application
+1. Prepare App (use Program 1 Hello world for this program)
+ Optimize performance and test thoroughly.
+ Ensure compatibility with various devices.
+activity_main.xml
+<?xml version="1.0" encoding="utf8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/resauto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Hello World!"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent"
+android:textSize="30sp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
+MainActivity.java
+package com.bca.helloworld;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+public class MainActivity extends AppCompatActivity
+{
+protected void onCreate(Bundle savedInstanceState)
+{
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+}
+}
+2. Generate Signed APK (Android Package Kit):
+ In Android Studio, navigate to Build > Generate Signed Bundle/APK.
+ Follow the prompts to create a new keystore or use an existing one. A keystore is a
+binary file that contains a set of private keys.
+ Configure the build type (release) and signing configuration.
+ Generate the signed APK file.
+3. Test Your Signed APK:
+ Before distributing your app, test the signed APK to ensure that the signing process
+didn't introduce any issues.
+ Install the APK on various devices and perform thorough testing.
+ Release on Google Play Console:
+ Sign in to the Google Play Console (https://play.google.com/apps/publish).
+ Create a new app entry if this is your first release or select an existing app.
+ Complete all the required information for the app listing, including the title, description,
+screenshots, and categorization.
+ Upload your signed APK file.
+ Set pricing and distribution options.
+ Optimize your store listing for search and conversion.
+ Once everything isset, click the "Publish" button to release your app to the Google Play
+Store.
+5. Other Distribution Channels (Optional):
+ Besides Google Play, you can distribute your app through other channels such as
+Amazon Appstore, Samsung Galaxy Store, or thirdparty app marketplaces.
+ Each distribution channel may have its own requirements and submission process, so
+be sure to follow their guidelines.
+6. Monitor and Update:
+ Keep an eye on user feedback and app performance metrics through the Google Play
+Console.
+ Regularly update your app to fix bugs, add new features, and improve user experience
+based on feedback.
+
+
+
+// Paste your full 2000 lines here
+`;
+
+  // Render note safely as plain text
+  document.getElementById('noteContent').textContent = notes;
+
+  function copyNotes() {
+    navigator.clipboard.writeText(notes).then(() => {
+      alert("All notes copied to clipboard!");
+    }).catch(err => {
+      alert("Failed to copy notes.");
+    });
+  }
+</script>
 
 </body>
 </html>
